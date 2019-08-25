@@ -1,7 +1,7 @@
 extends ..\layouts\app
 
 block content 
-    h1 #{title}
+    h3 #{title}
     form(method='POST',action='/articles/create')
         #form-group
             label Title:
@@ -12,4 +12,4 @@ block content
         #form-group
             label Body:
             input.form-control(name='body',type='text')
-        input.btn.btn-pimary(type='submit',value="Submit")
+        input.btn.btn-primary(type='submit',value="Submit")

@@ -2,9 +2,29 @@ doctype html
 html 
     head
         title #{title}
+        link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.min.css")
     body
-    block content
-    br
-    hr
-    footer
-        p Copyright &copy; 2019, MalMing Nih... 
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-2
+            .container
+                a.navbar-brand(href='/') TinDev
+                |   
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                |   
+                #navbarNavAltMarkup.collapse.navbar-collapse
+                    .navbar-nav
+                    a.nav-item.nav-link.active(href='/articles')
+                        | Home 
+                        span.sr-only (current)
+                    |       
+                    a.nav-item.nav-link(href='/articles/create') Create Article
+                    
+
+        .container
+            block content
+            br
+            hr
+            footer
+                p Copyright &copy; 2019, MalMing Nih... 
+        script(src="/bower_components/jquery/dist/jquery.min.js")
+        script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")

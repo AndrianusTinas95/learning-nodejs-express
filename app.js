@@ -1,7 +1,9 @@
-const app           = require('express')();
+const express       = require('express');
 const path          = require('path');
 const mongoose      = require('mongoose');
 const bodyParser    = require('body-parser');
+
+const app = express();
 
 mongoose.connect('mongodb://localhost/nodekb');
 let db = mongoose.connection;
@@ -24,6 +26,9 @@ app.set('view engine','pug');
 
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+
+// set public folder
+app.use(express.static(path.join(__dirname,'public')));
 
 app.get('/',(req,res)=>{
     res.render('index',{
@@ -59,6 +64,15 @@ app.post('/articles/create',(req,res)=>{
             if(err) throw err;
             res.redirect('/articles');
         });
+});
+
+app.get('/articles/:id',(req,res)=>{
+    Article.findById(req.params.id,(err,article)=>{
+        if(err) throw err;
+        res.render('articles/show',{
+            article:article
+        });
+    });
 });
 
 app.listen(2000,()=>{
