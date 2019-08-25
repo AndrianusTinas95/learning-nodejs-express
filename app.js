@@ -57,13 +57,13 @@ app.get('/articles/create',(req,res)=>{
 app.post('/articles/create',(req,res)=>{
     console.log('Submited');
     let article =new Article();
-        article.title   = req.body.title;
-        article.author  = req.body.author;
-        article.body    = req.body.body;
-        article.save((err)=>{
-            if(err) throw err;
-            res.redirect('/articles');
-        });
+    article.title   = req.body.title;
+    article.author  = req.body.author;
+    article.body    = req.body.body;
+    article.save((err)=>{
+        if(err) throw err;
+        res.redirect('/articles');
+    });
 });
 
 app.get('/articles/:id',(req,res)=>{
@@ -72,6 +72,37 @@ app.get('/articles/:id',(req,res)=>{
         res.render('articles/show',{
             article:article
         });
+    });
+});
+app.get('/articles/edit/:id',(req,res)=>{
+    Article.findById(req.params.id,(err,article)=>{
+        if(err) throw err;
+        res.render('articles/edit',{
+            title:'Edit ' + article.title,
+            article:article
+        });
+    });
+});
+
+app.post('/articles/update/:id',(req,res)=>{
+    let article ={};
+    article.title   = req.body.title;
+    article.author  = req.body.author;
+    article.body    = req.body.body;
+    
+    let query = {_id:req.params.id};
+
+    Article.update(query,article,(err)=>{
+        if(err) throw err;
+        res.redirect('/articles');
+    });
+});
+
+app.delete('/articles/:id',(req,res)=>{
+    let query = {_id:req.params.id};
+    Article.remove(query,(err)=>{
+        if(err) throw err;
+        res.send('Success');
     });
 });
 
