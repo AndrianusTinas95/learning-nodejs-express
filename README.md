@@ -7,3 +7,4 @@ here I am following tutorial from the Traversy Media chanel youtube, in playlist
 05.Node.js & Express From Scratch [Part 5] - Save Articles to MongoDB
 06.Node.js & Express From Scratch [Part 6] - Bower & Bootstrap
 07.Node.js & Express From Scratch [Part 7] - Update & Delete Articles
+08.Node.js & Express From Scratch [Part 8] - Messaging & Validation
