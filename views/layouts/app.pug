@@ -14,12 +14,15 @@ html
                 |   
                 #navbarNavAltMarkup.collapse.navbar-collapse
                     .navbar-nav
-                    a.nav-item.nav-link.active(href='/articles')
-                        | Home 
-                        span.sr-only (current)
-                    |       
-                    a.nav-item.nav-link(href='/articles/create') Create Article
-                    
+                        a.nav-item.nav-link.active(href='/articles')
+                            | Home 
+                            span.sr-only (current)
+                        |       
+                        a.nav-item.nav-link(href='/articles/create') Create Article
+                    .navbar-nav.ml-auto 
+                        a.nav-item.nav-link(href='/users/register') Register
+                        a.nav-item.nav-link(href='/users/login') Login
+
 
         .container
             != messages()

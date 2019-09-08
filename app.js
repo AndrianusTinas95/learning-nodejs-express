@@ -58,7 +58,10 @@ app.get('/',(req,res)=>{
 
 // router files
 let articles = require('./routes/articles');
+let users = require('./routes/users');
+
 app.use('/articles',articles);
+app.use('/users',users);
 
 app.listen(2000,()=>{
     console.log('Server started on port 2000....');
